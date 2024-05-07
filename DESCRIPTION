@@ -1,0 +1,19 @@
+Package: rrrankings
+Type: Package
+Title: New Visualizations for Ranked Data
+Version: 0.1.0
+Authors@R: c(person("Quinn", "Hargrove", role = c("aut", "cre")), person("Michael", "Pearce"))
+Maintainer: Quinn Hargrove <quinnlinnhargrove@outlook.com>
+Description: Functions for generating two visualizations of ranked data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 2.10)
+RoxygenNote: 7.2.3
+Imports: 
+    tidyverse,
+    ggbump,
+    PlackettLuce,
+    matrixStats,
+    egg

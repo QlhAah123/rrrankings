@@ -1,0 +1,66 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.  -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Insert Package Name
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of rrrankings is to allow users to easily create visualizations of ranked data that avoid common pitfalls of existing data.
+
+It includes two primary functions. The first, ``
+
+## Installation
+
+The development version of rrrankings is available from [GitHub](https://github.com/) with:
+
+```{r}
+#install.packages("devtools")
+#devtools::install_github("QlhAah123/rrrankings")
+```
+## Example
+
+
+```{r example}
+#library(rrrankings)
+
+#Import dataset, tidy and remove unused data
+gdpdata <- gdpdata %>%
+  pivot_longer(c("2000", "2005", "2010", "2015", "2020", "2022"), names_to = "year", values_to = "gdp") %>%
+  rename(code = "Country Code", "country" = "Country Name") %>%
+  filter(code %in% c("USA", "CHN", "JPN", "DEU", "IND", "GBR", "FRA", "RUS", "CAN", "ITA")) %>%
+  mutate(code = case_when(code == "USA" ~ "us",
+                          code == "CHN" ~ "cn",
+                          code == "JPN" ~ "jp",
+                          code == "DEU" ~ "de",
+                          code == "IND" ~ "in",
+                          code == "GBR" ~ "gb",
+                          code == "FRA" ~ "fr",
+                          code == "RUS" ~ "ru",
+                          code == "CAN" ~ "ca",
+                          code == "ITA" ~ "it")) %>%
+  mutate(year = as.numeric(year)) %>%
+  filter(!(year %in% c(2000, 2022)))
+
+gdpdata <- gdpdata %>%
+  select(!c(country)) %>%
+  rename(x = year, y = gdp, group = code)
+```
+
+
+
+
