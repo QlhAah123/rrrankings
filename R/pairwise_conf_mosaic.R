@@ -1,4 +1,4 @@
-library(tidyverse)
+library(dplyr)
 library(matrixStats)
 library(egg)
 library(PlackettLuce)

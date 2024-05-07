@@ -29,36 +29,21 @@ It includes two primary functions. The first, ``
 The development version of rrrankings is available from [GitHub](https://github.com/) with:
 
 ```{r}
-#install.packages("devtools")
-#devtools::install_github("QlhAah123/rrrankings")
+install.packages("devtools")
+devtools::install_github("QlhAah123/rrrankings")
 ```
 ## Example
 
 
 ```{r example}
-#library(rrrankings)
+library(rrrankings)
 
-#Import dataset, tidy and remove unused data
-gdpdata <- gdpdata %>%
-  pivot_longer(c("2000", "2005", "2010", "2015", "2020", "2022"), names_to = "year", values_to = "gdp") %>%
-  rename(code = "Country Code", "country" = "Country Name") %>%
-  filter(code %in% c("USA", "CHN", "JPN", "DEU", "IND", "GBR", "FRA", "RUS", "CAN", "ITA")) %>%
-  mutate(code = case_when(code == "USA" ~ "us",
-                          code == "CHN" ~ "cn",
-                          code == "JPN" ~ "jp",
-                          code == "DEU" ~ "de",
-                          code == "IND" ~ "in",
-                          code == "GBR" ~ "gb",
-                          code == "FRA" ~ "fr",
-                          code == "RUS" ~ "ru",
-                          code == "CAN" ~ "ca",
-                          code == "ITA" ~ "it")) %>%
-  mutate(year = as.numeric(year)) %>%
-  filter(!(year %in% c(2000, 2022)))
+#Import dataset
+gdpdata <- data(gdpdata) %>%
+  filter(!(year %in% c(2000, 2022))) %>%
+  select(!c(country)) 
 
-gdpdata <- gdpdata %>%
-  select(!c(country)) %>%
-  rename(x = year, y = gdp, group = code)
+
 ```
 
 

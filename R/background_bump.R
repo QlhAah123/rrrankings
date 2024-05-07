@@ -1,6 +1,6 @@
 
 #Libraries
-library(tidyverse)
+library(dplyr)
 library(ggbump)
 
 .y_spread_ties <- function(data, gap_size=0, upper_clamp = Inf){
